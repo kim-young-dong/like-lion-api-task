@@ -1,0 +1,36 @@
+ul {
+  list-style-type: none;
+}
+div,
+p,
+h1,
+h2,
+h3,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+.article {
+  display: flex;
+  gap: 20px;
+}
+
+.article-info {
+  display: inline-flex;
+  flex-direction: column;
+  max-height: 200px;
+}
+.thumb {
+  width: 200px;
+  height: 200px;
+  vertical-align: top;
+}
+.des {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.6em;
+}

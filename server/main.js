@@ -16,15 +16,14 @@ const PORT = 3000;
 
 function searchNews(request, response, next) {
   const keyword = request.params.keyword;
-  let result;
   axios
     .get(`https://newsapi.org/v2/everything?q=${keyword}`, {
       headers: { Authorization: "83e3eaac23724c9887f1f8af227c439f" },
     })
     .then((res) => {
-      console.log("res", res.data);
-      result = JSON.stringify(res.data);
-      console.log("result", result);
+      const result = JSON.stringify(res.data);
+      console.log(res.status);
+
       if (!result) {
         response.json({ status: 500, msg: "server error" });
       } else {
@@ -38,7 +37,7 @@ function searchNews(request, response, next) {
   // response.setHeader("Content-Type", "text/plain;charset=utf-8");
 }
 
-app.get("/search/:string", searchNews);
+app.get("/search/:keyword?", searchNews);
 
 app.post("/post_test", (request, response, next) => {
   console.log(request.body);
