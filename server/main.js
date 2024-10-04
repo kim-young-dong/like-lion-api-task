@@ -29,11 +29,6 @@ function searchNews(request, response, next) {
         response.json({ status: 200, result: JSON.parse(result) });
       }
     });
-
-  // response.setHeader("Access-Control-Allow-Origin", "*");
-  // response.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
-
-  // response.setHeader("Content-Type", "text/plain;charset=utf-8");
 }
 
 app.get("/search/:keyword?", searchNews);

@@ -1,11 +1,4 @@
 "use strict";
-// interface Article {
-//   author: string;
-//   title: string;
-//   description: string;
-//   url: string;
-//   urlToImage: string;
-// }
 
 const resultNode = document.querySelector("#result");
 const keywordNode = document.querySelector("#keyword");
