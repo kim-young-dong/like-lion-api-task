@@ -22,7 +22,6 @@ function searchNews(request, response, next) {
     })
     .then((res) => {
       const result = JSON.stringify(res.data);
-      console.log(res.status);
 
       if (!result) {
         response.json({ status: 500, msg: "server error" });

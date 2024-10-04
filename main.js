@@ -15,7 +15,7 @@ function search() {
 
   xhr.open(
     "get",
-    `http://localhost:3000/search${keywordNode.value || ""}`,
+    `http://localhost:3000/search/${keywordNode.value || ""}`,
     true
   );
 
@@ -24,25 +24,25 @@ function search() {
   xhr.onload = function () {
     if (xhr.status === 200) {
       const data = JSON.parse(xhr.responseText);
-      console.dir(data.result.articles);
-      console.log(data.result.articles);
 
       data.result.articles.forEach((article) => {
         resultNode.innerHTML += `
           <li class="article">
-          ${(() => {
-            if (article.urlToImage) {
-              return `<img class="thumb" src="${article.urlToImage}" />`;
-            } else {
-              return "<img class='thumb' src='https://via.placeholder.com/160' />";
-            }
-          })()}
+          <figure>
+            ${(() => {
+              if (article.urlToImage) {
+                return `<img class="thumb" src="${article.urlToImage}" />`;
+              } else {
+                return "<img class='thumb' src='https://via.placeholder.com/160' />";
+              }
+            })()}
+          </figure>
             
             <div class="article-info">
               <h2>${article.title}</h2>
-              <p>${article.author ? article.author : ""}</p>
+              <p class="author">${article.author ? article.author : ""}</p>
               <p class="des">${article.description}</p>
-              <a href="${article.url}">Read more</a>
+              <p><a href="${article.url}">Read more</a></p>
             </div>
           </li>
         `;
